@@ -131,6 +131,11 @@ volumeMounts: []
 #   mountPath: "/etc/foo"
 #   readOnly: true
 
+hostAliases:
+  - ip: "100.127.1.85"
+    hostnames:
+      - "etaps.llm.intern"
+
 nodeSelector: {}
 
 tolerations: []
@@ -199,5 +204,3 @@ migrationJob:
 envVars: {
     # USE_DDTRACE: "true"
 }
-
-
