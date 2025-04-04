@@ -31,6 +31,8 @@ spec:
       serviceAccountName: {{ include "litellm.serviceAccountName" . }}
       securityContext:
         {{- toYaml .Values.podSecurityContext | nindent 8 }}
+      hostAliases:
+        {{- toYaml .Values.hostAliases | nindent 8 }}
       containers:
         - name: {{ include "litellm.name" . }}
           securityContext:
@@ -121,7 +123,6 @@ spec:
             httpGet:
               path: /health/readiness
               port: http
-          # Give the container time to start up.  Up to 5 minutes (10 * 30 seconds)
           startupProbe:
             httpGet:
               path: /health/readiness
